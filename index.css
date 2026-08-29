@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0a0a14;
+    color: #e8e8f4;
+  }
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #12121f;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a4a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5c5c8a;
+}
+
+/* Glass & Glow classes */
+.glass-panel {
+  background: rgba(18, 18, 31, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(42, 42, 74, 0.6);
+}
+
+.glass-card {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(42, 42, 74, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(123, 47, 242, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(123, 47, 242, 0.25);
+  transform: translateY(-2px);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(123, 47, 242, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(0, 119, 255, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes ultraPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(199, 125, 255, 0.65);
+  }
+}
+
+.animate-ultra-pulse {
+  animation: ultraPulse 3s infinite ease-in-out;
+}
+
+@keyframes gridPattern {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(42, 42, 74, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 42, 74, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Business / institution workspaces use a lighter, non-IT institutional skin.
+   Ultra Admin stays dark because this wrapper is only on WorkspaceScreen. */
+.institution-mode {
+  background: #fbfbfd !important;
+  color: #111827 !important;
+  letter-spacing: -0.01em;
+}
+
+.institution-mode [class*="bg-[#0a0a14]"],
+.institution-mode [class*="bg-[#12121f]"] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+.institution-mode [class*="bg-[#1a1a2e]"] {
+  background-color: #f4f6fb !important;
+}
+
+.institution-mode [class*="border-[#2a2a4a]"] {
+  border-color: #d8dee9 !important;
+}
+
+.institution-mode h1.text-white,
+.institution-mode h2.text-white,
+.institution-mode h3.text-white,
+.institution-mode h4.text-white,
+.institution-mode h5.text-white,
+.institution-mode p.text-white,
+.institution-mode span.text-white,
+.institution-mode div.text-white:not(button) {
+  color: #111827 !important;
+}
+
+.institution-mode [class*="text-[#9090b8]"],
+.institution-mode [class*="text-[#5c5c8a]"] {
+  color: #5b6b80 !important;
+}
+
+.institution-mode aside,
+.institution-mode header {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(18px);
+}
+
+.institution-mode aside {
+  border-right: 1px solid #dbe2ea !important;
+  box-shadow: 8px 0 24px rgba(15, 23, 42, 0.035);
+}
+
+/* Clearly selected navigation: obsidian/deep violet with white content. */
+.institution-mode aside button[class*="bg-[#7b2ff2]/20"],
+.institution-mode aside button[class*="bg-gradient-to-r"],
+.institution-mode aside button[class*="bg-[#4c1d95]"] {
+  background: #171224 !important;
+  border-color: #171224 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 18px rgba(23, 18, 36, 0.16);
+}
+
+.institution-mode aside button[class*="bg-[#7b2ff2]/20"] *,
+.institution-mode aside button[class*="bg-gradient-to-r"] *,
+.institution-mode aside button[class*="bg-[#4c1d95]"] * {
+  color: #ffffff !important;
+}
+
+/* The top summary card is intentionally dark and authoritative. */
+.institution-mode .institution-hero,
+.institution-mode .institution-hero[class*="bg-gradient"] {
+  background: #172033 !important;
+  border-color: #172033 !important;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
+}
+
+.institution-mode .institution-hero h1,
+.institution-mode .institution-hero h2,
+.institution-mode .institution-hero h3,
+.institution-mode .institution-hero h4,
+.institution-mode .institution-hero .text-white {
+  color: #ffffff !important;
+}
+
+.institution-mode .institution-hero [class*="text-[#9090b8]"],
+.institution-mode .institution-hero [class*="text-[#5c5c8a]"] {
+  color: #cbd5e1 !important;
+}
+
+.institution-mode main {
+  background: transparent !important;
+}
+
+.institution-mode .bg-gradient-to-r,
+.institution-mode .bg-gradient-to-br,
+.institution-mode .bg-gradient-to-tr {
+  color: inherit;
+}
+
+.institution-mode button[class*="from-[#7b2ff2]"],
+.institution-mode button[class*="from-[#00d4aa]"],
+.institution-mode button[class*="from-[#ffc857]"],
+.institution-mode button[class*="from-[#f7931a]"],
+.institution-mode button[class*="bg-[#0077ff]"],
+.institution-mode button[class*="bg-[#00d4aa]"] {
+  color: #ffffff !important;
+}
+
+.institution-mode .soft-white-panel {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.institution-mode .soft-chip {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 1rem;
+  padding: 0.85rem 0.75rem;
+}
+
+.institution-mode .stat-value {
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.institution-mode .stat-label {
+  display: block;
+  font-size: 0.65rem;
+  line-height: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  color: #475569;
+}
+
+.institution-mode .text-muted {
+  color: #64748b !important;
+}
+
+.institution-mode .summary-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #4b5563;
+}
+
+.institution-mode .summary-line strong {
+  color: #111827;
+}
+
+/* Profile block and detail text must remain legible on light surfaces. */
+.institution-mode aside > div:last-child,
+.institution-mode aside > div:last-child > div {
+  background: #f1f5f9 !important;
+}
+
+.institution-mode aside > div:last-child [class*="font-semibold"],
+.institution-mode aside > div:last-child [class*="font-bold"] {
+  color: #172033 !important;
+}
+
+.institution-mode aside > div:last-child [class*="text-[#5c5c8a]"],
+.institution-mode aside > div:last-child [class*="text-[#9090b8]"] {
+  color: #475569 !important;
+}
+
+/* Dates, tags and metrics use readable dark ink on light pills. */
+.institution-mode code,
+.institution-mode time,
+.institution-mode .metric-detail {
+  color: #334155;
+}
+
+.institution-mode [class*="text-[9px]"],
+.institution-mode [class*="text-[10px]"],
+.institution-mode [class*="text-[11px]"] {
+  font-weight: 650;
+}
+
+.institution-mode [class*="bg-[#1a1a2e]"][class*="rounded"],
+.institution-mode [class*="bg-[#0a0a14]"][class*="rounded"] {
+  color: #334155;
+}
+
+.institution-mode .kanban-column,
+.institution-mode [class*="rounded-2xl"] {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.institution-mode .glass-card,
+.institution-mode .glass-panel,
+.institution-mode .soft-white-panel {
+  backdrop-filter: none !important;
+}
+
+.institution-mode .bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
